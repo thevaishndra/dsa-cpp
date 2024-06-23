@@ -129,3 +129,37 @@ void print10(int n){
 } 
 }
 //left bottom right angle triangle, row- 1, 0 1, 1 0 1, 0 1 0 1, 1 0 1 0 1
+void print11(int n){
+    int start = 1;
+    for(int i = 0; i < n; i++){
+        if(i % 2 == 0) start = 1;
+        else start = 0;
+        for(int j = 0; j < 1; j++){
+            cout<<start;
+            start = 1 - start;
+        }
+        cout<<endl;
+    }
+}
+//left bottom right angle triangle + right bottom right angle triangle
+//row no :- 1, 1 2, 1 2 3, 1 2 3 4 space row no :- 1, 2 1, 3 2 1, 4 3 2 1
+void print12(int n){
+    int space = 2*(n-1);
+    for(int i = 1; i <= n; i++){
+        //number
+        for(int j = 1; j <= i; j++){
+            cout<<j;
+        }
+        //space
+        for(int j = 1; j <= space; j++){
+            cout<" ";
+        }
+        //number
+        for(int j = 1; j <= i; j++){
+            cout<<j;
+        }
+        cout<<endl;
+        space -= 2;//spaces: 6, 4, 2, 0 it's decreasing by 2
+    }
+}
+//left bottom right angle triangle, row: 1, 2 3, 4 5 6; 7 8 9 10, 11 12 13 14 15
