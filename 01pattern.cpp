@@ -56,19 +56,76 @@ void print6(int n){
 }
 // perfect triangle in the bottom center having: space, star, space
 void print7(int n){
-    for(int i = 0; i <= n; i++){
+    for(int i = 0; i < n; i++){
         //space
-        for(int j = 0; j <= n-i-1; j++){
+        for(int j = 0; j < n-i-1; j++){
             cout<<" ";
         }
         //star
-        for(int j = 0; j <= (2*i+1); j++){
+        for(int j = 0; j < (2*i+1); j++){
             cout<<"*";
         }
         //space
-        for(int j = 0; j <= n-i-1; j++){
+        for(int j = 0; j < n-i-1; j++){
             cout<<" ";
         }
         cout<<endl;
     }
 }
+//inverted perfect triangle in center- '*'
+void print8 (int n){
+    for(int i = 0; i < n; i++){
+        //space
+        for(int j=0; j < i; j++){
+            cout<<" ";
+        }
+        //star
+        for(int j = 0; j < 2*n-(2*+1); j++){
+            cout<<"*";
+        }
+        //space
+        for(int j = 0; j < i; j++){
+            cout<<" ";
+        }
+        cout<<endl;
+    }
+}
+//diamond with no symmetry ctrC ctrlV ques7 + ques8
+void print9(int n){
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < n-i-1; j++){
+            cout<<" ";
+        }
+        for(int j = 0; j < 2*i+1; j++){
+            cout<<"*";
+        }
+        for(int j= 0; j <= n-i-1; j++){
+            cout<<" ";
+        }
+        cou<<endl;
+    }
+    for(int i = 0; i < n; i++){
+        for(int j = 0; j < i; j++){
+            cout<<" ";
+        }
+        for(int j = 0; j <= 2*n-(2*i+1)){
+            cout<<"*";
+        }
+        for(int j = 0; j < i; j++){
+            cout<<" ";
+        }
+        cout<<endl;
+    }
+}
+// half perfect diamond in left, it was ques 2+ 5 if it didn't had symmetry, but it has symmetry
+void print10(int n){
+    for(int i = 1; i <= 2*n-1; i++){//n rows
+    int stars = i;//we want to print stars = i till half diamond
+    if(i > n) stars = 2*n-i//after that half, we are printing differently
+    for(int j = 1; j <=stars; j++){
+        cout<<"*";
+    }
+    cout<<endl;
+} 
+}
+//left bottom right angle triangle, row- 1, 0 1, 1 0 1, 0 1 0 1, 1 0 1 0 1
