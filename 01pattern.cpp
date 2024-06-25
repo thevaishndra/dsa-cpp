@@ -162,4 +162,114 @@ void print12(int n){
         space -= 2;//spaces: 6, 4, 2, 0 it's decreasing by 2
     }
 }
-//left bottom right angle triangle, row: 1, 2 3, 4 5 6; 7 8 9 10, 11 12 13 14 15
+//left right angle triangle, read row: 1, 2 3, 4 5 6; 7 8 9 10, 11 12 13 14 15
+void print13(int n){
+    int num = 1;
+    for(int i = 1; i <= n; i++){
+        for(int j = 1; j <= i; j++){
+            cout<<num;
+            num += 1;//as we are incrementing no by 1 in every line
+        }
+        cout<<endl;
+    }
+}
+//read row - A, A B, A B C, A B C D, A B C D E left right angle triangle
+void print14(int n){
+for(int i = 0; i < n; i++){
+    for(char ch = 'A'; ch <= 'A'+i; ch++){//A+0 = A; A+1= B; A+2=C....n
+        cout<<ch<<" ";
+    }
+    cout<<endl;
+}
+}
+//read row - A B C D E, A B C D, A B C, A B, A left inverted right angle triangle
+void print15(int n){
+for(int i = 1; i <= n; i++){
+    for(char ch = 'A'; ch < = n-i-1; ch++){
+        cout<<ch<<" ";
+    }
+    cout<<endl;
+}
+}
+//read row - A, B B, C C C, D D D D, E E E E E right angle triangle
+void print16(int n){
+for(int i = 0; i < n; i++){
+    ch = 'A' + i;
+    for(int j = 0; j <= i; j++){
+        cout<<ch<<" ";
+    }
+    cout<<endl;
+}
+}
+//perfect triangle in center - space, alphabet, space -> A, A B A, A B C B A, A B C D C B A, A B C D E D C B A
+void print17(int n){
+    for(int i = 0; i < n; i++){
+        //space
+        for(int j = 0; j < n-i-1; j++){
+            cout<<" ";
+        }
+        //alphabet
+        char ch ='A'; int breakpoint = (2*i=1)/2
+        for(int j = 0; j < 2*i+1; j++){
+            cout<<ch;
+            if(j <= breakpoint) ch++;
+            else ch--;
+        }
+        //space
+        for(int j = 0; j < n-i-1; j++){
+            cout<<" ";
+        }
+        cout<<endl;
+    }
+}
+//read row - E, D E, C D E, B C D E, A B C D E left bottom right angle triangle
+void print18(int n){
+    for(int i = 0; i < n; i++){
+        for(char ch = 'E'- i ; ch < 'E'; ch++){//because in last of every row there is E
+            cout<<ch<<" ";
+        }
+        cout<<endl;
+    }
+}
+//perfect diamond of spaces surrounded by stars - star, space, star
+void print19(int n){
+    for(int i = 1; i <= n; i++){
+        //stars
+        for(int j =1; j <= n-i; j++){
+            cout<<"*";
+        }
+        //space
+        ini = 0
+        for(int j =0; j < inis; j++){
+            cout<<" ";
+        }
+        //space
+        for(int j = 1; j <= n-i; j++){
+            cout<<" ";
+        }
+        cout<<endl;
+        inis += 2;
+    }
+    //then the inverted part
+    for(int i = 1; i <= n; i++){
+        //stars
+        for(int j = 1; j <= i; j++){
+            cout<<"*";
+        }
+        //space
+        inis = 2*n -2;
+        for(int j = 0; j < inis; j++){
+            cout<<" ";
+        }
+        //stars
+        for(int j =1; j <= i; j++){
+            cout<<" ";
+        }
+        cout<<endl;
+        inis -=2;
+    }
+}
+//half left diamond + half right diamond -> star, space, star
+void print20(int n){
+
+}
