@@ -80,3 +80,26 @@ void print7(int n) vector<int>ls{
     sort(ls.begin(), ls.end());//sorting in order
     for(auto it: ls) cout<<it<<" ";//printing it
 }
+
+//Prime no. check
+void print8(int n){
+    int count = 0
+for(int i = 0; i * i <= n; i++){
+    if (n % i == 0) count++;
+    if((n/i) != i) count++;
+}
+if(count == 2) cout<<"True";
+else cout<<"False";
+}
+
+//Find gcd/hcf -> The largest no. that divides the both
+//gcd(9, 12) = 3; gcd(11, 13) = 1; gcd(20, 40) = 20;
+//brute-force approach
+void print9(int n, m){
+    for(i = min(n, m); i >= 1; i-- ){
+        if(n % i == 0 && m % i == 0){
+            cout<<i;
+        }
+        break;
+    }
+}
