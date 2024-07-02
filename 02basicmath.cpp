@@ -103,3 +103,7 @@ void print9(int n, m){
         break;
     }
 }
+//optimized approach: Euclidean Algorithm
+void print10(int n, m){
+    
+}
