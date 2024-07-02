@@ -102,13 +102,13 @@ void print9(int n){
         for(int j= 0; j <= n-i-1; j++){
             cout<<" ";
         }
-        cou<<endl;
+        cout<<endl;
     }
     for(int i = 0; i < n; i++){
         for(int j = 0; j < i; j++){
             cout<<" ";
         }
-        for(int j = 0; j <= 2*n-(2*i+1)){
+        for(int j = 0; j <= 2*n-(2*i+1); j++){
             cout<<"*";
         }
         for(int j = 0; j < i; j++){
@@ -121,7 +121,7 @@ void print9(int n){
 void print10(int n){
     for(int i = 1; i <= 2*n-1; i++){//n rows
     int stars = i;//we want to print stars = i till half diamond
-    if(i > n) stars = 2*n-i//after that half, we are printing differently
+    if(i > n) stars = 2*n-i;//after that half, we are printing differently
     for(int j = 1; j <=stars; j++){
         cout<<"*";
     }
@@ -152,7 +152,7 @@ void print12(int n){
         }
         //space
         for(int j = 1; j <= space; j++){
-            cout<" ";
+            cout<<" ";
         }
         //number
         for(int j = 1; j <= i; j++){
@@ -185,7 +185,7 @@ for(int i = 0; i < n; i++){
 //read row - A B C D E, A B C D, A B C, A B, A left inverted right angle triangle
 void print15(int n){
 for(int i = 1; i <= n; i++){
-    for(char ch = 'A'; ch < = n-i-1; ch++){
+    for(char ch = 'A'; ch <= n-i-1; ch++){
         cout<<ch<<" ";
     }
     cout<<endl;
@@ -194,7 +194,7 @@ for(int i = 1; i <= n; i++){
 //read row - A, B B, C C C, D D D D, E E E E E right angle triangle
 void print16(int n){
 for(int i = 0; i < n; i++){
-    ch = 'A' + i;
+    char ch = 'A' + i;
     for(int j = 0; j <= i; j++){
         cout<<ch<<" ";
     }
@@ -209,7 +209,7 @@ void print17(int n){
             cout<<" ";
         }
         //alphabet
-        char ch ='A'; int breakpoint = (2*i=1)/2
+        char ch ='A'; int breakpoint = (2*i+1)/2;
         for(int j = 0; j < 2*i+1; j++){
             cout<<ch;
             if(j <= breakpoint) ch++;
@@ -239,7 +239,7 @@ void print19(int n){
             cout<<"*";
         }
         //space
-        ini = 0
+        int inis = 0;
         for(int j =0; j < inis; j++){
             cout<<" ";
         }
@@ -257,7 +257,7 @@ void print19(int n){
             cout<<"*";
         }
         //space
-        inis = 2*n -2;
+        int inis = 2*n -2;
         for(int j = 0; j < inis; j++){
             cout<<" ";
         }
@@ -272,7 +272,7 @@ void print19(int n){
 //half left diamond + half right diamond -> star, space, star
 void print20(int n){
 int space = 2*n-2;
-for(int i = 1; i <= 2n-1; i++){
+for(int i = 1; i <= 2*n-1; i++){
     int stars = i;
     if(i > n) stars = 2*n-i;
     //stars
