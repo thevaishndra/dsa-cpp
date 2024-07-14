@@ -47,7 +47,40 @@ void sumOfNum(int i, int sum){
 }
 
 //functional
-int sumOfNumFunc(){
+int sumOfNumFunc(int n){
+if( n == 0) return 0;
+return n + sumOfNumFunc(n-1);
+}
+
+//factorial of n
+int factorial(int n){
+if(n == 0) return 1;//to avoid getting 0
+return n * factorial(n - 1);
+}//TC -> O(N)  SC-> O(N)
+
+//reverse an array (functional)
+//using 2 parameter
+int reverse(int l, int r, int arr[]){
+    if ( l >= r) return;
+    swap(arr[l], arr[r]);
+    reverse(l + 1, r - 1);//array indices starts with 0
+}
+//functional
+int reverseFunc(int i, int n, int arr[]){
+    if(i >= n/2) return;
+    swap(arr[i], arr[n-i-1]);//swapping b/w 0 index and last index
+    return reverseFunc(i + 1, n, arr);
+}
+
+//check string is palindrome
+int palindrome(int i, string& s){
+    if( i >= s.length()/2) return true;
+    if(s[i] != s.length()-i-1) return false;
+    return palindrome(i + 1, s);
+}
+
+//check fibonacci no.
+int fibonacci(int n){
 
 }
 
@@ -60,5 +93,17 @@ int main(){
     // print1toNbt(n, n);
     // printNto1bt(1, n);
     // sumOfNum(n, 0);
-    cout<<sumOfNumFunc();
+    // cout<<sumOfNumFunc(n);
+    // cout<<factorial(n);
+
+    // int arr[n]; cin>>arr[n];
+    // reverse(0, n-1, arr);
+    //to print array we also have to iterate the array in for loop
+    // reverseFunc(0, n, arr);
+
+    // string s = "madam"; 
+    // palindrome(0, s);
+
+    fibonacci(n);
+    return 0;
 }
