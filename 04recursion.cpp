@@ -79,9 +79,12 @@ int palindrome(int i, string& s){
     return palindrome(i + 1, s);
 }
 
-//check fibonacci no.
+//check fibonacci no. -> 0, 1, 1, 2, 3, 5, 8, 13...
 int fibonacci(int n){
-
+    if( n <= 1) return;
+    int last = fibonacci(n - 1);
+    int sLast = fibonacci(n - 2);
+    return last + sLast;
 }
 
 int main(){
@@ -104,6 +107,6 @@ int main(){
     // string s = "madam"; 
     // palindrome(0, s);
 
-    fibonacci(n);
+    // cout<<(fibonacci(n));
     return 0;
 }
