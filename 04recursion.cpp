@@ -107,6 +107,6 @@ int main(){
     // string s = "madam"; 
     // palindrome(0, s);
 
-    // cout<<(fibonacci(n));
+    // cout<<(fibonacci(5));
     return 0;
 }
