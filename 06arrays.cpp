@@ -34,7 +34,7 @@ int findSecondLargest(int arr[], int n){
 
 
 //optimal
-int print2largest(vector<int> &arr) {
+int findSecondLargest2(vector<int> &arr) {
         int largest = arr[0];
         int slargest = -1;
         
