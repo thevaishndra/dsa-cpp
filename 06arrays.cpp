@@ -1,6 +1,8 @@
 #include<bits/stdc++.h>
 using namespace std;
 //Array -> linear data structure, stores similar elements
+//EASY QUES
+
 // Q1. Largest element in array
 //brute
 int sortArray(vector<int> &arr){
@@ -16,6 +18,7 @@ int findLargestElement(int arr[], int  n){
     }
     return largest;
 }
+
 
 //Q2. Second largest element in array
 //brute
@@ -48,6 +51,7 @@ int findSecondLargest2(vector<int> &arr){
     }
 }
 
+
 //optimal
 int findSecondLargest3(vector<int> &arr) {
         int largest = arr[0];
@@ -65,6 +69,7 @@ int findSecondLargest3(vector<int> &arr) {
         
     }
 
+
 //Q3. Check if the array is sorted
 int checkSorted(int arr[], int n){
     for(int i = 1; i < n; i++){
@@ -77,10 +82,88 @@ int checkSorted(int arr[], int n){
     return true;
 }
 
+
 //Q4. Remove Duplicates from sorted array
+//Brute
+int removeDuplicates(int arr[], int n){
+    set <int> set;
+    for(int i = 0; i < n; i++){
+        set.insert(arr[i]);
+    }
+    int index = 0;
+    for (auto it : set) {
+        arr[index] = it;
+        index++;
+    }
+    
+    return set.size();
+}
+//Optimal
+int removeDuplicates2(int arr[], int n){
+    int i = 0;
+    for(int j = 0; j < n; j++){
+        if(arr[j] != arr[i]){
+            arr[i + 1] = arr[j];
+            i++;
+        }
+    }
+    return i + 1;
+}
+
+
 //Q5. Left rotate the array by one place
+int leftRotateOne(int arr[], int n){
+    int temp = arr[0];
+    for(int i = 1; i < n; i++){
+        arr[i-1] = arr[i];
+    }
+    arr[n - 1] = temp;
+    for(int i = 0; i < n; i++){
+        cout<<arr[i]<<" ";
+    }
+}
+
+
 //Q6. Left rotate the array by D places
+//Brute
+int leftRotateByD(int arr[], int n, int d){
+    d = d % n;
+    int temp[d];
+    for(int i = d; i < n; i++){
+        arr[i - d] = arr[i];
+    }
+    // int j = 0;
+    // for(int i = n - d; i < n; i++){
+    //     arr[i] = temp[j];
+    //     j++;
+    // } But instead of writing j we can do
+    for(int i = n - d; i < n; i++){
+        arr[i] = temp[i - (n - d)];//for ex: n-d = 4 so, i = 4, 4 - 4 = 0; which is the first index of temp
+    }//then i = 5, 5 - 4 = 1; which is the second index of temp and so on
+    //so, instaed of creating another pointer j we can print elements from temp by doing this
+}
+//Optimal
+void reverse(int arr[], int start, int end){//Function to reverse elements if not using stl otherwise cpp stl has in-built reverse func
+    while(start <= end){
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+        start ++; 
+        end--;
+    }
+}
+int leftRotateArrayByD2(int arr[], int n, int d){
+  // Reverse first k elements
+  reverse(arr, 0, d - 1);
+  // Reverse last n-k elements
+  reverse(arr, d, n - 1);
+  // Reverse whole array
+  reverse(arr, 0, n - 1);
+}
+
+
 //Q7. Move all zeroes to the end of array
+
 //Q8. Linear search
 //Q9. Union of two sorted array
 //Q10. Intersection of two sorted array
