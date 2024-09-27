@@ -22,19 +22,34 @@ int findLargestElement(int arr[], int  n){
 int findSecondLargest(int arr[], int n){
     sort(arr, arr+n);//sort the array in ascending order
     int secondLargest = arr[0]; 
-    int largest = arr[n - 1];
+    int largest = arr[n - 1];//ofc, largest element will be in the last
     for(int i = n-2; i >= 0; i++){//Finding the second element which is not equal to the largest element 
-        if(arr[i] != largest)
+        if(arr[i] != largest)//logically the element before largest is slargest but what if ie the same no. as largest
         secondLargest = arr[i];
         break;
     }
     return secondLargest;
 }
 //better
-
+int findSecondLargest2(vector<int> &arr){
+    int largest = arr[0];//first pass: finding largest 
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i] > largest){
+            largest = arr[i];
+        }
+        return largest;
+    }
+    int slargest = -1;//if there are negatives in the array then we will take INT_MIN
+    for(int i = 0; i < arr.size(); i++){
+        if(arr[i] > slargest && arr[i] != largest){
+            slargest = arr[i];
+        }
+        return slargest;
+    }
+}
 
 //optimal
-int findSecondLargest2(vector<int> &arr) {
+int findSecondLargest3(vector<int> &arr) {
         int largest = arr[0];
         int slargest = -1;
         
@@ -50,10 +65,10 @@ int findSecondLargest2(vector<int> &arr) {
         
     }
 
-//Q3 Check if the array is sorted
+//Q3. Check if the array is sorted
 int checkSorted(int arr[], int n){
     for(int i = 1; i < n; i++){
-        if(arr[i] >= arr[i-1]){
+        if(arr[i] >= arr[i-1]){//the next no. should be greater than previous 
             //we can leave it blank
         } else {
             return false;
@@ -62,7 +77,18 @@ int checkSorted(int arr[], int n){
     return true;
 }
 
-//Q4 Remove Duplicates from sorted array
+//Q4. Remove Duplicates from sorted array
+//Q5. Left rotate the array by one place
+//Q6. Left rotate the array by D places
+//Q7. Move all zeroes to the end of array
+//Q8. Linear search
+//Q9. Union of two sorted array
+//Q10. Intersection of two sorted array
+//Q11. Find missing no. in an array
+//Q12. Max consecutive ones
+//Q13. Find the no. that appears once & other numbers twice
+//Q14. Longest subarray with sum K [positives]
+//Q15. Longest subarray with sum K [positives + negatives]
 
 
 
