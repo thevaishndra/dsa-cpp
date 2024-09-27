@@ -163,20 +163,104 @@ int leftRotateArrayByD2(int arr[], int n, int d){
 
 
 //Q7. Move all zeroes to the end of array
+//Brute
+int moveZeroesToEnd(int arr[], int n){
+    vector <int> temp;//creating temporary initiating with 0
 
+    for(int i = 0; i < n; i++){//putting all the non zero elements in temp
+        if(arr[i] != 0){
+            temp.push_back(arr[i]);
+        }
+    }
+    int nonZero = temp.size();
+    for(int i = 0; i < nonZero; i++){//now, from temp putting back non zeros in array in the starting
+        arr[i] = temp[i];
+    }
+    for(int  i = nonZero; i < n; i++){//after the non zero size, putting zeros in the remaining array
+        arr[i] = 0;
+    }
+    for(int i = 0; i < n; i++){//return array as it is an int type instead of vector
+        cout<<arr[i]<<" ";
+    }
+}
+//Optimal
+vector<int> moveZeroesToEnd2(int n, vector<int>arr){
+    int j = -1;
+    for(int i = 0; i < n; i++){
+        if(arr[i] = 0){
+            j = i;//j is always going to be at 0
+            break;
+        }
+    }//suppose, if j+1 is non zero eg: 1,we will swap it, now j is pointing 1 and i is pointing 0, 
+    //but then we also do j++, then j is again at 0, and in loop i is iterating so i goes to next element adjacent to j
+    for(int i = j + 1; i < n; i++){
+        if(arr[i] != 0){
+            swap(arr[i], arr[j]);//as we used vector we need not write code for swap
+            j++;
+        }
+    }
+    return arr;//we need not write a loop to print array
+}
 //Q8. Linear search
+int linearSearch(int arr[], int n, int num){
+    for(int i = 0; i < n; i++){
+        if(arr[i] == num){//if element is equal to the given num, return i otherwise return -1
+        return i;
+        }
+    }
+      return -1;
+}
 //Q9. Union of two sorted array
+//Brute
+vector <int> findUnion(int arr1[], int arr2[], int n, int m){
+    set <int> st;
+    for(int i = 0; i < n; i++){
+        st.insert(arr1[i]);//add unique elements in set from array 1
+    }
+    for(int i = 0; i < m; i++){
+        st.insert(arr2[i]);//add unique elements in set from array 2
+    }
+    vector <int> Union;
+    for(auto & it : st){
+        Union.push_back(it);//now putting back set elements in the new array called union
+    }
+}
+//Optimal
+vector <int> findUnion(int arr1[], int arr2[], int n, int m){
+    int  i = 0; int  j = 0;
+    vector <int> Union;
+    while( i < n && j < m){
+        if(arr1[i] <= arr2[j]){
+            if(Union.size() == 0 || Union.back() != arr1[i]){
+                Union.push_back(arr1[i]);
+                i++;
+            }
+        }
+        else {
+            if(Union.size() == 0 || Union.back() != arr2[j]){
+                Union.push_back(arr2[j]);
+                j++;
+            }
+        }
+    }
+    while(i < n){
+        if(Union.back() != arr1[i]){
+            Union.push_back(arr1[i]);
+            i++;
+        }
+    }
+    while(j < m){
+        if(Union.back() != arr2[j]){
+            Union.push_back(arr2[j]);
+            j++;
+        }
+    }
+    return Union;
+}
 //Q10. Intersection of two sorted array
+
 //Q11. Find missing no. in an array
 //Q12. Max consecutive ones
 //Q13. Find the no. that appears once & other numbers twice
 //Q14. Longest subarray with sum K [positives]
 //Q15. Longest subarray with sum K [positives + negatives]
-
-
-
-
-
-
-
-
