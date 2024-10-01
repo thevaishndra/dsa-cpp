@@ -176,3 +176,27 @@
 //                 return el;
 //             }
 //             return -1;
+
+// 53. Maximum Subarray
+// int sum = 0; int maxi = INT_MIN;
+//         for(int i = 0; i < nums.size(); i++){
+//             sum = sum + nums[i];
+//             if(sum > maxi){
+//                 maxi = sum;
+//             }
+//             if(sum < 0){
+//                 sum = 0;
+//             }
+//         }
+//         return maxi;
+
+// 121. Best Time to Buy and Sell Stock
+// int maxProfit(vector<int>& prices) {
+//         int mini = prices[0]; int profit = 0;
+//         for(int i = 1; i < prices.size(); i++){
+//             int cost = prices[i] - mini;
+//             profit = max(profit, cost);
+//             mini = min(mini, prices[i]);
+//         }
+//         return profit;
+//     }
