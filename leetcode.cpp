@@ -1,3 +1,5 @@
+//Array leetcode ques
+
 // 7. Reverse Integer
 // int reverseN = 0;
 //         while (x != 0) {
@@ -200,3 +202,90 @@
 //         }
 //         return profit;
 //     }
+
+// 2149. Rearrange Array Elements by Sign
+// int n = nums.size();
+//         vector<int> ans(n,0);
+//         int pIndex = 0; int nIndex = 1;
+//         for(int i = 0; i < n; i++){
+//             if(nums[i] < 0){
+//                 ans[nIndex] = nums[i];
+//                 nIndex +=2;
+//             }
+//             else{
+//                 ans[pIndex] = nums[i];
+//                 pIndex += 2;
+//             }
+//         }
+//         return ans;
+
+// 31. Next Permutation
+// int index = -1; int n = nums.size();
+//         for(int i = n - 2; i >= 0; i--){
+//             if(nums[i] < nums[i + 1]){
+//                 index = i;
+//                 break;
+//             }
+//         }
+//         if(index == -1){
+//             reverse(nums.begin(), nums.end());
+//             return;
+//         }
+//         for(int i = n - 1; i > index; i--){
+//             if(nums[i] > nums[index]){
+//                 swap(nums[i], nums[index]);
+//                 break;
+//             }
+//         }
+//         reverse(nums.begin() + index + 1, nums.end());
+
+// 73. Set Matrix Zeroes
+// int col0 = 1;
+//         int n = matrix.size();
+//         int m = matrix[0].size();
+
+//         for(int i = 0; i < n; i++){
+//             for(int j = 0; j < m; j++){
+//                 if(matrix[i][j] == 0){
+//                     matrix[i][0] = 0;
+
+//                    if(j != 0){
+//                     matrix[0][j] = 0;
+//                     }
+//                     else{
+//                     col0 = 0;
+//                     }
+//                 }
+//             }
+//         }
+//         for(int i = 1; i < n; i++){
+//             for(int j = 1; j < m; j++){
+//                 if(matrix[i][j] != 0){
+//                     if(matrix[0][j] == 0 || matrix[i][0] == 0){
+//                         matrix[i][j] = 0;
+//                     }
+//                 }
+//             }
+//         }
+//         if(matrix[0][0] == 0){
+//             for(int j = 0; j <m; j++){
+//                 matrix[0][j] = 0;
+//             }
+//         }
+//         if(col0 == 0){
+//             for(int i = 0; i < n; i++){
+//                 matrix[i][0] = 0;
+//             }
+//         }
+
+// 48. Rotate Image
+// int n = matrix.size();
+//         for(int i = 0; i < n - 1; i++){
+//             for(int j = i + 1; j < n; j++){
+//                 swap(matrix[i][j], matrix[j][i]);
+//             }
+//         }
+//         for(int i = 0; i < n; i++){
+//             reverse(matrix[i].begin(), matrix[i].end());
+//         }
+
