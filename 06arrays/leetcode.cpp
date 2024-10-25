@@ -289,3 +289,46 @@
 //             reverse(matrix[i].begin(), matrix[i].end());
 //         }
 
+// 54. Spiral Matrix
+// if (matrix.empty() || matrix[0].empty()) return {};
+
+//     int m = matrix.size();
+//     int n = matrix[0].size();
+//     int left = 0, right = n - 1, top = 0, bottom = m - 1;
+//     vector<int> ans;
+
+//     while (top <= bottom && left <= right) {
+//         for (int i = left; i <= right; i++) {
+//             ans.push_back(matrix[top][i]);
+//         }
+//         top++;
+//         for (int i = top; i <= bottom; i++) {
+//             ans.push_back(matrix[i][right]);
+//         }
+//         right--;
+//         if (top <= bottom) {
+//             for (int i = right; i >= left; i--) {
+//                 ans.push_back(matrix[bottom][i]);
+//             }
+//             bottom--;
+//         }
+//         if (left <= right) {
+//             for (int i = bottom; i >= top; i--) {
+//                 ans.push_back(matrix[i][left]);
+//             }
+//             left++;
+//         }
+//     }
+//     return ans;
+
+// 560. Subarray Sum Equals K
+// map<int,int>mpp;
+//         mpp[0] = 1;
+//         int preSum = 0; int cnt = 0;
+//         for(int i = 0; i < nums.size(); i++){
+//             preSum += nums[i];
+//             int remove = preSum - k;
+//             cnt += mpp[remove];
+//             mpp[preSum] += 1;
+//         }
+//         return cnt;
