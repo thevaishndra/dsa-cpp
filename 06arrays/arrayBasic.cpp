@@ -9,6 +9,9 @@ int sortArray(vector<int> &arr){
     sort(arr.begin(), arr.end());//first sort the array in ascending order
     return arr[arr.size()-1];//print [size of array - 1]th index
 }
+//tc -> O(n log n)
+//sc -> O(1)
+
 //optimal
 int findLargestElement(int arr[], int  n){
     int largest= arr[0];
@@ -18,6 +21,8 @@ int findLargestElement(int arr[], int  n){
     }
     return largest;
 }
+//tc -> O(n)
+//sc -> O(1)
 
 
 //Q2. Second largest element in array
@@ -26,13 +31,16 @@ int findSecondLargest(int arr[], int n){
     sort(arr, arr+n);//sort the array in ascending order
     int secondLargest = arr[0]; 
     int largest = arr[n - 1];//ofc, largest element will be in the last
-    for(int i = n-2; i >= 0; i++){//Finding the second element which is not equal to the largest element 
+    for(int i = n-2; i >= 0; i--){//Finding the second element which is not equal to the largest element 
         if(arr[i] != largest)//logically the element before largest is slargest but what if ie the same no. as largest
         secondLargest = arr[i];
         break;
     }
     return secondLargest;
 }
+//tc -> O(n log n)
+//sc -> O(1)
+
 //better
 int findSecondLargest2(vector<int> &arr){
     int largest = arr[0];//first pass: finding largest 
@@ -44,71 +52,79 @@ int findSecondLargest2(vector<int> &arr){
     }
     int slargest = -1;//if there are negatives in the array then we will take INT_MIN
     for(int i = 0; i < arr.size(); i++){
-        if(arr[i] > slargest && arr[i] != largest){
+        if(arr[i] > slargest && arr[i] != largest){//element should be greater than slargest and not equal to largest
             slargest = arr[i];
         }
         return slargest;
     }
 }
-
+//tc -> O(n) + O(n) = O(n)
+//sc -> O(1)
 
 //optimal
 int findSecondLargest3(vector<int> &arr) {
-        int largest = arr[0];
-        int slargest = -1;
+    int largest = arr[0];
+    int slargest = -1;
         
-        for (int i = 1; i < arr.size(); i++){
-            if(arr[i] > largest){
-                slargest = largest;
-                largest = arr[i];
-            } else if (arr[i] < largest && arr[i] > slargest){
-                slargest = arr[i];
-            } 
-        }
-        return slargest;
-        
+    for (int i = 1; i < arr.size(); i++){//finding largest & slargest both in one pass
+        if(arr[i] > largest){
+            slargest = largest;
+            largest = arr[i];
+        } else if (arr[i] < largest && arr[i] > slargest){
+            slargest = arr[i];
+        } 
     }
+        return slargest; 
+}
+//tc -> O(n)
+//sc -> O(1)
 
 
 //Q3. Check if the array is sorted
 int checkSorted(int arr[], int n){
     for(int i = 1; i < n; i++){
-        if(arr[i] >= arr[i-1]){//the next no. should be greater than previous 
-            //we can leave it blank
-        } else {
+        if(arr[i] <= arr[i-1]){//the next no. should be greater than previous 
             return false;
-        }
+        } 
     }
     return true;
 }
+//tc -> O(n)
+//sc -> O(1)
 
 
-//Q4. Remove Duplicates from sorted array
+//Q4. Remove Duplicates from sorted array -imp
 //Brute
 int removeDuplicates(int arr[], int n){
-    set <int> set;
+    set <int> st;//set takes unique values and no repeats
     for(int i = 0; i < n; i++){
-        set.insert(arr[i]);
+        st.insert(arr[i]);//collection of non repeating values
     }
     int index = 0;
-    for (auto it : set) {
-        arr[index] = it;
-        index++;
+    //copy elements from set to original array
+    for (auto it : st) {
+        arr[index] = it;//assign value from set to array
+        index++;//move to next index
     }
     
-    return set.size();
+    return st.size();//return number of unique elements
 }
+//tc -> O(n log n)
+//sc -> O(n)
+
 //Optimal
 int removeDuplicates2(int arr[], int n){
-    int i = 0;
-    for(int j = 0; j < n; j++){
-        if(arr[j] != arr[i]){
-            arr[i + 1] = arr[j];
-            i++;
+    int i = 0;//2 pointer approach
+    for(int j = 0; j < n; j++){//i and j both starts together from same element
+        if(arr[j] != arr[i]){//they are same only j oves forward but they are not
+            arr[i + 1] = arr[j];//then i + 1 position is same as value j is holding
+            i++;// i + 1 position becomes i and j will move forward as it was doing
         }
     }
-    return i + 1;
+    return i + 1;//this will create an array with no duplicates till i + 1 position
 }
+//tc -> O(n)
+//sc -> O(1)
 
 
 //Q5. Left rotate the array by one place
