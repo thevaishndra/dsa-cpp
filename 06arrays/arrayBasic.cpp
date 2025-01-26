@@ -129,13 +129,13 @@ int removeDuplicates2(int arr[], int n){
 
 //Q5. Left rotate the array by one place
 int leftRotateOne(int arr[], int n){
-    int temp = arr[0];
+    int temp = arr[0];//store first element in temp
     for(int i = 1; i < n; i++){
-        arr[i-1] = arr[i];
+        arr[i-1] = arr[i];//values gets shifted to left one place
     }
-    arr[n - 1] = temp;
+    arr[n - 1] = temp;//place temp at the last position
     for(int i = 0; i < n; i++){
-        cout<<arr[i]<<" ";
+        cout<<arr[i]<<" ";//rotated array
     }
 }
 
@@ -143,9 +143,9 @@ int leftRotateOne(int arr[], int n){
 //Q6. Left rotate the array by D places
 //Brute
 int leftRotateByD(int arr[], int n, int d){
-    d = d % n;
-    int temp[d];
-    for(int i = d; i < n; i++){
+    d = d % n;//handles rotation greater than size of array, no of rotations is reduced to array bounds
+    int temp[d];//stores first d elements
+    for(int i = d; i < n; i++){//shift rest of array by d positions
         arr[i - d] = arr[i];
     }
     // int j = 0;
@@ -153,10 +153,9 @@ int leftRotateByD(int arr[], int n, int d){
     //     arr[i] = temp[j];
     //     j++;
     // } But instead of writing j we can do
-    for(int i = n - d; i < n; i++){
-        arr[i] = temp[i - (n - d)];//for ex: n-d = 4 so, i = 4, 4 - 4 = 0; which is the first index of temp
-    }//then i = 5, 5 - 4 = 1; which is the second index of temp and so on
-    //so, instaed of creating another pointer j we can print elements from temp by doing this
+    for(int i = n - d; i < n; i++){//copy the elements from temp[] to the end of arr[]
+        arr[i] = temp[i - (n - d)];
+    }
 }
 //Optimal
 void reverse(int arr[], int start, int end){//Function to reverse elements if not using stl otherwise cpp stl has in-built reverse func
@@ -168,14 +167,15 @@ void reverse(int arr[], int start, int end){//Function to reverse elements if no
         end--;
     }
 }
-int leftRotateArrayByD2(int arr[], int n, int d){
-  // Reverse first k elements
+int leftRotateArrayByD2(int arr[], int n, int d){//function for rotation
+  // Reverse first d elements
   reverse(arr, 0, d - 1);
-  // Reverse last n-k elements
+  // Reverse last n-d elements
   reverse(arr, d, n - 1);
   // Reverse whole array
   reverse(arr, 0, n - 1);
 }
+//in right rotation, reverse last d elements, first n - d elements, reverse whole array
 
 
 //Q7. Move all zeroes to the end of array
