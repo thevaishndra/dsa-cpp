@@ -1,7 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 //Array -> linear data structure, stores similar elements
-//EASY QUES
 
 // Q1. Largest element in array
 //brute
@@ -9,8 +8,7 @@ int sortArray(vector<int> &arr){
     sort(arr.begin(), arr.end());//first sort the array in ascending order
     return arr[arr.size()-1];//print [size of array - 1]th index
 }
-//tc -> O(n log n)
-//sc -> O(1)
+//tc -> O(n log n) //sc -> O(1)
 
 //optimal
 int findLargestElement(int arr[], int  n){
@@ -21,8 +19,7 @@ int findLargestElement(int arr[], int  n){
     }
     return largest;
 }
-//tc -> O(n)
-//sc -> O(1)
+//tc -> O(n) //sc -> O(1)
 
 
 //Q2. Second largest element in array
@@ -38,8 +35,7 @@ int findSecondLargest(int arr[], int n){
     }
     return secondLargest;
 }
-//tc -> O(n log n)
-//sc -> O(1)
+//tc -> O(n log n) //sc -> O(1)
 
 //better
 int findSecondLargest2(vector<int> &arr){
@@ -58,8 +54,7 @@ int findSecondLargest2(vector<int> &arr){
         return slargest;
     }
 }
-//tc -> O(n) + O(n) = O(n)
-//sc -> O(1)
+//tc -> O(n) + O(n) = O(n) //sc -> O(1)
 
 //optimal
 int findSecondLargest3(vector<int> &arr) {
@@ -76,8 +71,7 @@ int findSecondLargest3(vector<int> &arr) {
     }
         return slargest; 
 }
-//tc -> O(n)
-//sc -> O(1)
+//tc -> O(n) //sc -> O(1)
 
 
 //Q3. Check if the array is sorted
@@ -89,8 +83,7 @@ int checkSorted(int arr[], int n){
     }
     return true;
 }
-//tc -> O(n)
-//sc -> O(1)
+//tc -> O(n) //sc -> O(1)
 
 
 //Q4. Remove Duplicates from sorted array -imp
@@ -217,6 +210,8 @@ vector<int> moveZeroesToEnd2(int n, vector<int>arr){
     }
     return arr;//we need not write a loop to print array
 }
+
+
 //Q8. Linear search
 int linearSearch(int arr[], int n, int num){
     for(int i = 0; i < n; i++){
@@ -226,6 +221,8 @@ int linearSearch(int arr[], int n, int num){
     }
       return -1;
 }
+
+
 //Q9. Union of two sorted array
 //Brute
 vector <int> findUnion(int arr1[], int arr2[], int n, int m){
@@ -273,7 +270,13 @@ vector <int> findUnion(int arr1[], int arr2[], int n, int m){
     }
     return Union;
 }
+
+
 //Q10. Intersection of two sorted array
+//Brute
+
+
+
 
 //Q11. Find missing no. in an array
 //Q12. Max consecutive ones
