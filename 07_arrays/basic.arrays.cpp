@@ -95,33 +95,30 @@ int removeDuplicates(int arr[], int n){
     }
     int index = 0;
     //copy elements from set to original array
-    for (auto it : st) {
+    for (auto it : st) {//iterates over st taking it - iterator as each element
         arr[index] = it;//assign value from set to array
         index++;//move to next index
     }
-    
     return st.size();//return number of unique elements
 }
-//tc -> O(n log n)
-//sc -> O(n)
+//tc -> O(n log n) //sc -> O(n)
 
 //Optimal
 int removeDuplicates2(int arr[], int n){
     int i = 0;//2 pointer approach
-    for(int j = 0; j < n; j++){//i and j both starts together from same element
-        if(arr[j] != arr[i]){//they are same only j oves forward but they are not
+    for(int j = 1; j < n; j++){//i and j both starts with consecutive elements
+        if(arr[j] != arr[i]){//they are same only j moves forward but they are not
             arr[i + 1] = arr[j];//then i + 1 position is same as value j is holding
             i++;// i + 1 position becomes i and j will move forward as it was doing
         }
     }
     return i + 1;//this will create an array with no duplicates till i + 1 position
 }
-//tc -> O(n)
-//sc -> O(1)
+//tc -> O(n) //sc -> O(1)
 
 
 //Q5. Left rotate the array by one place
-int leftRotateOne(int arr[], int n){
+void leftRotateOne(int arr[], int n){
     int temp = arr[0];//store first element in temp
     for(int i = 1; i < n; i++){
         arr[i-1] = arr[i];//values gets shifted to left one place
@@ -131,6 +128,7 @@ int leftRotateOne(int arr[], int n){
         cout<<arr[i]<<" ";//rotated array
     }
 }
+//tc - O(n) sc - O(1)
 
 
 //Q6. Left rotate the array by D places
@@ -150,6 +148,7 @@ int leftRotateByD(int arr[], int n, int d){
         arr[i] = temp[i - (n - d)];
     }
 }
+
 //Optimal
 void reverse(int arr[], int start, int end){//Function to reverse elements if not using stl otherwise cpp stl has in-built reverse func
     while(start <= end){
