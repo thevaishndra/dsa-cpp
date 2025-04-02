@@ -326,6 +326,38 @@ vector<int> findIntersection2(int arr1[], int arr2[], int n, int m) {
 
 
 //Q11. Find missing no. in an array
+//Brute
+int missingNo(int arr[], int n){
+    for(int i = 1; i <= n; i++){//traversing the original array of size n -> including missing no
+        int flag = 0;//initially all are 0, if we found the same no while traversing we mark it as 1, if we found missing no it will be 0
+        for(int j = 0; j < n-1; j++){//linear search in array
+            if(arr[j] == i){//check if i is in the arr[]
+                flag = 1;//missing no not found
+                break;
+            }
+        }
+        if(flag == 0){//missing no. found
+            return i;
+        }
+    }
+    return -1;//no missing no
+}
+//tc -> O(n) * O(n - 1) = O((n * n) - n) => O(n * n) sc -> O(1)
+
+//Better
+int missingNo2(vector<int> &arr, int n){
+    int hash[n + 1] = {0};
+        for(int i = 0; i < n - 1; i++){
+            hash[arr[i]]++;
+        }
+        for(int i = 1; i <= n; i++){
+            if(hash[i] == 0){
+                return i;
+            }
+        }
+        return -1;
+}
+
 //Q12. Max consecutive ones
 //Q13. Find the no. that appears once & other numbers twice
 //Q14. Longest subarray with sum K [positives]
