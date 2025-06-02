@@ -346,19 +346,100 @@ int missingNo(int arr[], int n){
 
 //Better
 int missingNo2(vector<int> &arr, int n){
-    int hash[n + 1] = {0};
-        for(int i = 0; i < n - 1; i++){
-            hash[arr[i]]++;
+    int hash[n + 1] = {0};//hash array of size n + 1, initializing all values from 0
+        for(int i = 0; i < n - 1; i++){//we are marking in hash
+            hash[arr[i]]++;//if arr[i] = 1 then hash[1]++ means in hash it would be incremented by 1 ie, 0 -> 1
         }
         for(int i = 1; i <= n; i++){
-            if(hash[i] == 0){
-                return i;
+            if(hash[i] == 0){//the no which doesn't gets marked as 1 in hash means that is not present in array
+                return i;//missing nummber
             }
         }
-        return -1;
+        return -1;//if there is no missing number
 }
+//tc -> O(n) + O(n) = O(n) sc -> O(n)
+
+//Optimal 1
+int missingNo3(vector<int> &arr, int n){
+    int sum = n * (n + 1) / 2;//sum of natural nos formula -> so actual sum including the missing no.
+    int s2 = 0;
+    for(int i = 0; i < n; i++){
+        s2 += arr[i];// sum of nos present in array
+    }
+    return (sum - s2);//actual sum - sum of nos present in array gives missing no.
+}
+//tc -> O(n) sc -> O(1)
+
+//Optimal 2
+int missingNo4(vector<int> &arr, int n){
+    int xor1 = 0; int xor2 = 0;
+    for(int i = 0; i < n - 1; i++){
+        xor2 ^= arr[i];// xor of all elements in array -> 1 ^ 2 ^ 4
+        xor1 ^= (i + 1);//xor of all elements including missing no -> 1 ^ 2 ^ 3 ^ 4
+    }
+    return xor1 ^ xor2;//(1 ^ 2 ^ 4) ^ (1 ^ 2 ^ 3 ^ 4) = 3 -> missing no
+}//a ^ a = 0; 0 ^ a = a -> all same nos will cancel out each other and then we get no itself by ^ with 0
+//tc -> O(n) sc -> O(1)
+
 
 //Q12. Max consecutive ones
+int maxConsecutiveOnes(vector<int> &arr, int n){
+    int count = 0; int maxi = 0;
+    for(int i = 0; i < n; i++){
+        if(arr[i] == 1){// if element is 1 in array
+            count++;// we will mark it in count as no of times it is 1
+            maxi = max(maxi, count);//tracking the maximum count of consecutives we get after incrementing the count everytime
+        } else {// as we get i = 0, it will break the count and changes it to 1 again, so count again the consecutive 1s
+            count = 0;
+        }
+    }
+    return maxi;//count of max consecutive 1s
+}
+//tc -> O(n) sc -> O(1)
+
+
 //Q13. Find the no. that appears once & other numbers twice
+//brute -> traverse an array , do a linear search and count if it appears more than once
+int appearsOnce(vector<int> &arr, int n){
+    for(int i = 0; i < n; i++){
+        int num = arr[i];//pick current no
+        int count = 0;
+
+        for(int j = 0; j < n; j++){//count how many times it appears
+            if(arr[j] == num){
+                count++;
+            }
+        }
+        if(count == 1){//if it appears only once, return it
+            return num;
+        }
+    }
+    return -1;//if there is no such number
+}
+//tc -> O(n * n) sc -> O(1) 
+
+//better
+int appearsOnce2(vector<int> &arr, int n){
+    int maxi = arr[0];
+    for(int i = 0; i < n; i++){
+        maxi = max(maxi, arr[i]);
+    }
+    vector<int> hash(maxi + 1, 0);
+
+    for(int i = 0; i < n; i++){
+        hash[arr[i]]++;
+    }
+    for(int i = 0; i < n; i++){
+        if(hash[arr[i]] == 1){
+            return arr[i];
+        }
+    }
+    return -1;
+}
+//tc -> sc ->
+
+//
+
+
 //Q14. Longest subarray with sum K [positives]
 //Q15. Longest subarray with sum K [positives + negatives]
