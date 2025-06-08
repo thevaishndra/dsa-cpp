@@ -78,5 +78,9 @@ vector <int> majorityElement3(vector<int> arr) {
     }
 
     int mini = int(n/3) + 1;
-    if(count1 >= mini) ls.push_
+    if(count1 >= mini) ls.push_back(element1);
+    if(count2 >= mini) ls.push_back(element2);
+
+    return ls;
 }
+//tc -> O(2n) //sc -> O(1)
