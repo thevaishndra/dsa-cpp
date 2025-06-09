@@ -63,31 +63,34 @@ vector<vector<int>> fourSum3(int target, vector<int> &arr) {
     sort(arr.begin(), arr.end());
 
     for(int i = 0; i < n; i++){
-        if(i > 0 && arr[i] == arr[i - 1]) continue;
+        if(i > 0 && arr[i] == arr[i - 1]) continue;//skip duplicate values of i to ensure we dont repeat same no. combinations
         for(int j = i + 1; j < n; j++) {
-            if(j > i + 1 && arr[j] == arr[j - 1]) continue;
+            if(j > i + 1 && arr[j] == arr[j - 1]) continue;//skip duplicate values of j
 
-            int k = j + 1;
-            int l = n - 1;
+            int k = j + 1;//k starts after j
+            int l = n - 1;//l starts from the end of the array
+
             while(k < l) {
-                long long sum = arr[i];
-                sum += arr[j];
+                long long sum = arr[i];//to prevent overflow we use long long
+                sum += arr[j];//sum of i + j + k + l
                 sum += arr[k];
                 sum += arr[l];
+
                 if(sum == target) {
                     vector<int> temp = {arr[i], arr[j], arr[k], arr[l]};
                     ans.push_back(temp);
-                    k++;
-                    l--;
+                    //move both pointeres inward to check for other combinations
+                    k++;//move k forward
+                    l--;//move l backward
 
-                    while(k < l && arr[k] == arr[k - 1]) k++;
-                    while(k < l && arr[l] == arr[l + 1]) l--;
+                    while(k < l && arr[k] == arr[k - 1]) k++;//skip duplicate values of arr[k]
+                    while(k < l && arr[l] == arr[l + 1]) l--;//skip duplicate values of arr[l]
                 }
                 else if(sum < target) {
-                    k++;
+                    k++;//if sum is less move k to right to try a larger value
                 }
                 else {
-                    l--;
+                    l--;//move l to left to try a smaller value
                 }
             }
         }
