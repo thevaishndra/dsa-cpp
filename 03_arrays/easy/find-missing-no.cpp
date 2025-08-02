@@ -19,12 +19,13 @@ int missingNo(int arr[], int n){
     return -1;//no missing no
 }
 //tc -> O(n) * O(n - 1) = O((n * n) - n) => O(n * n) sc -> O(1)
+//if take inclusivity of 0 then, outer loop -> i = 0 -> <= n, inner loop -> j = 0 -> < n
 
 //Better
 int missingNo2(vector<int> &arr, int n){
     int hash[n + 1] = {0};//hash array of size n + 1, initializing all values from 0
         for(int i = 0; i < n - 1; i++){//we are marking in hash
-            hash[arr[i]]++;//if arr[i] = 1 then hash[1]++ means in hash it would be incremented by 1 ie, 0 -> 1
+            hash[arr[i]]++;//if arr[i] = 1 then hash[1]++ means increment value by 1 at index 0 ie, 0 -> 1
         }
         for(int i = 1; i <= n; i++){
             if(hash[i] == 0){//the no which doesn't gets marked as 1 in hash means that is not present in array
@@ -34,6 +35,7 @@ int missingNo2(vector<int> &arr, int n){
         return -1;//if there is no missing number
 }
 //tc -> O(n) + O(n) = O(n) sc -> O(n)
+//if take inclusivity of 0 then, outer loop -> i = 0 -> < n, inner loop -> i = 0 -> <= n
 
 //Optimal 1
 int missingNo3(vector<int> &arr, int n){
@@ -45,6 +47,7 @@ int missingNo3(vector<int> &arr, int n){
     return (sum - s2);//actual sum - sum of nos present in array gives missing no.
 }
 //tc -> O(n) sc -> O(1)
+//works for inclusivity of zero
 
 //Optimal 2
 int missingNo4(vector<int> &arr, int n){
@@ -56,3 +59,4 @@ int missingNo4(vector<int> &arr, int n){
     return xor1 ^ xor2;//(1 ^ 2 ^ 4) ^ (1 ^ 2 ^ 3 ^ 4) = 3 -> missing no
 }//a ^ a = 0; 0 ^ a = a -> all same nos will cancel out each other and then we get no itself by ^ with 0
 //tc -> O(n) sc -> O(1)
+//works for inclusivity of zero

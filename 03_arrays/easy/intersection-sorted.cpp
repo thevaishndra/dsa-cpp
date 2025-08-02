@@ -3,7 +3,7 @@ using namespace std;
 
 //Q10. Intersection of two sorted array
 //Brute
-vector<int> findIntersection(int arr1[], int arr2[], int n, int m) {
+vector<int> findIntersection(int arr1[], int arr2[], int n, int m) { 
     vector<int> intersection;//vector to store final ans
     vector<int> visited(m, 0); //visited array to track which elements in arr2 have already been used
 
