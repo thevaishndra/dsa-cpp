@@ -18,3 +18,4 @@ int main () {
     
     cout << y->data << endl; //accessing data of node x using pointer y
 }
+
