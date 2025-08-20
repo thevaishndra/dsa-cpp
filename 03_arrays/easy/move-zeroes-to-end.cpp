@@ -28,7 +28,7 @@ int moveZeroesToEnd(int arr[], int n){
 vector<int> moveZeroesToEnd2(int n, vector<int>arr){
     int j = -1;
     for(int i = 0; i < n; i++){
-        if(arr[i] = 0){
+        if(arr[i] == 0){
             j = i;//j is always going to be at 0
             break;
         }

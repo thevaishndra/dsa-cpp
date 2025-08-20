@@ -39,6 +39,44 @@ int appearsOnce2(vector<int> &arr, int n){
     }
     return -1;
 }
-//tc -> sc ->
+//tc -> O(n) + O(n) + O(n) => O(3n) sc -> O(input)
 
-//
+//better 2
+int appearsOnce3(vector<int> &arr, int n) {
+
+    //size of the array:
+    int n = arr.size();
+
+    // Declare the hashmap.
+    // And hash the given array:
+    map<int, int> mpp;
+    for (int i = 0; i < n; i++) {
+        mpp[arr[i]]++;
+    }
+
+    //Find the single element and return the answer:
+    for (auto it : mpp) {
+        if (it.second == 1)
+            return it.first;
+    }
+
+    //This line will never execute
+    //if the array contains a single element.
+    return -1;
+}
+//tc -> O(N*logM) + O(M), where M = size of the map i.e. M = (N/2)+1. N = size of the array
+//sc -> O(M) as we are using a map data structure. Here M = size of the map i.e. M = (N/2)+1
+
+//optimal
+int appearsOnce4(vector<int> &arr, int n) {
+    //size of the array:
+    int n = arr.size();
+
+    // XOR all the elements:
+    int xorr = 0;
+    for (int i = 0; i < n; i++) {
+        xorr = xorr ^ arr[i];
+    }
+    return xorr;
+}
+//tc -> O(n) //sc -> O(1)
