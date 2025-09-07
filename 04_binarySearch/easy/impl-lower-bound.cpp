@@ -17,10 +17,12 @@ int lowerBound(vector<int> &arr, int x){
 }
 //tc -> O(logn) //sc -> O(1)
 //Search insert position -> this is same as lower bound
+//ceil -> smallest element where arr[ind] >= x same as lower bound
+//floor -> largest element where arr[ind] <= x, arr[mid] <= x and everything is same
 
-//Q3. Find the lower bound of a given no in sorted array
+//Q3. Find the upper bound of a given no in sorted array
 //upper bound -> smallest element where arr[ind] > x {x is the given key i n ques}
-int lower_bound(vector<int> &arr, int x){
+int upper_bound(vector<int> &arr, int x){
     int low = 0; int high = arr.size() - 1;
     while(low <= high){
         int mid = (low + high) /2;
@@ -33,3 +35,5 @@ int lower_bound(vector<int> &arr, int x){
     return ans;
 }
 //tc -> O(logn) //sc -> O(1)
+
+
