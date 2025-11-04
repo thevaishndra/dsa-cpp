@@ -11,12 +11,13 @@ struct Node {
     }
 };
 
-Node* traversalInLinkedList(vector<int> &arr){
-    Node* temp = head;
-    while(temp != nullptr) {
-        cout<<temp-> data<<" -> ";
-        temp = temp->next
+void traversalInLinkedList(Node* head) {
+    Node* temp = head; //pointer temp is pointing to head
+    while (temp != nullptr) {//untill node not points to nullptr
+        cout << temp->data << " -> ";//print data and arrow
+        temp = temp->next;//temp is now pointing at the next of temp
     }
-    return NULL;
+    cout << "NULL" << endl;
 }
 
+//tc -> O(n)

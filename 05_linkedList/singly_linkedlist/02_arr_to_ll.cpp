@@ -5,7 +5,7 @@ struct Node {
     int data;
     Node* next;
 
-    Node(int val, node* next) {
+    Node(int val, node* next1) {
         data = val;
         next = nullptr;
     }
@@ -24,3 +24,5 @@ Node* arrayToLinkedList(vector<int>& arr) {
     }
     return head;
 }
+
+//tc -> O(n)
