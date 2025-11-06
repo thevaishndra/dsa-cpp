@@ -5,15 +5,15 @@ struct Node {
     int data;
     Node* next;
 
-    Node(int val, Node* next1){
+    Node(int val, Node* next1 = nullptr){
         data = val;
-        Node* = next1;
+        next = next1;
     }
 };
 
 void traversalInLinkedList(Node* head) {
     Node* temp = head; //pointer temp is pointing to head
-    while (temp != nullptr) {//untill node not points to nullptr
+    while (temp != nullptr) {//until node not points to nullptr
         cout << temp->data << " -> ";//print data and arrow
         temp = temp->next;//temp is now pointing at the next of temp
     }

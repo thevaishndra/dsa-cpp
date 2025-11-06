@@ -5,9 +5,9 @@ struct Node {
     int data;
     Node* next;
 
-    Node(int val, Node* next1){
+    Node(int val, Node* next1 = nullptr){
         data = val;
-        next1 = nullptr;
+        next = next1;
     }
 }
 
