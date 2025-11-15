@@ -33,3 +33,29 @@ Node* sortAll(Node* head) {
     return head;
 }
 //tc -> O(n + nlogn + n) //sc -> O(n)
+
+///////can't understand
+//optimal
+Node* sortAll2(Node* head) { 
+    if(head == nullptr || head->next == nullptr) return head;
+
+    // find mid
+    Node* slow = head;
+    Node* fast = head->next;
+
+    while (fast && fast->next) {
+        slow = slow->next;
+        fast = fast->next->next;
+    }
+    Node* mid = slow->next;
+    slow->next = nullptr;
+
+    Node* leftHead = head;
+    Node* rightHead = middle->next;
+
+    leftHead = ms(leftHead);
+    rightHead = ms(rightHead);
+
+    return merge2(leftHead, rightHead);
+}
+//tc -> O(logn)
