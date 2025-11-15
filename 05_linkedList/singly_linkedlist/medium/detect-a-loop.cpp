@@ -27,6 +27,19 @@ bool detectLoop(Node* head) {//return type is bool
     }
     return false;
 }
-//tc -> O(n * logn) travers eonce and map operations takes logn //sc -> O(n)
+//tc -> O(n * logn) traverse once and map operations takes logn //sc -> O(n)
 
-//Optimal
+//Optimal :- tortoise and hare algo
+bool detectLoop(Node* head) {
+    int slow = head;
+    int fast = head;
+
+    while(fast != nullptr && fast->next != nullptr) {
+        slow = slow->next;
+        fast = fast->next->next;
+
+        if(slow == fast) return true;//It means that there is a loop -> no point where fast == X or fast->next == X
+    }
+    return false;//it means that it's linear and there is no loop -> there will be at some point fast or fast->next == X
+}
+//tc -> O(n) //sc -> O(1)
