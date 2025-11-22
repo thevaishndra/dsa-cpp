@@ -62,7 +62,7 @@ int convert2Decimal (string x) {
 //6. OR Operator (|) -> 1 true is true; all false is false
 //1101 | 0111 -> 1111
 
-//7. XOR Operator (^) -> if no. of 1s is odd then 1; if no. of 1s is odd then 0
+//7. XOR Operator (^) -> if no. of 1s is odd then 1; if no. of 1s is even then 0
 //1101 ^ 0111 -> 1010
 
 //8. NOT Operator (~) -> Flips all bits of the number
@@ -81,4 +81,44 @@ int convert2Decimal (string x) {
 //13 << 4 -> 1101 << 4 -> 11010000 => 16 + 64 + 128 => 208
 
 
-//swap 2 no. without a third variable
+//11. Swap 2 no. without a third variable
+//temp = a; a = b; b = temp;
+//XOR -> even no of 1s -> 0; odd no. of 1s -> 1;  5 ^ 5 = 0
+//a = a ^ b; b = a ^ b => (a ^ b) ^ b => a; a = a ^ b => (a ^ b) ^ b => (a ^ b) ^ a => b
+
+
+//12. Check if the ith bit is set or not
+//using left shift -> (n & (1 << i) != 0)
+//n = 13; i = 2;
+//13 -> (1101) base2 
+//1 << i => 1 << 2 => 100
+//1101 & 100 => 0100 != 0; hence it's a set
+
+//using right shift -> ((n >> i) & 1 != 0)
+//n = 13; i = 2;
+//13 -> 1101
+//1101 >> 2 => 0011
+//0011 & 1 = 0001 != 0; hence it's a set
+
+
+//13. Set the ith bit 1
+//n | (1 << i)
+//n = 9; i = 2;
+//9 -> (1001) base2 
+//1 << 2 = 100
+//1001 | 100 = 1101
+
+
+//14. Set the ith bit 0
+//n & ~(1 << i)
+//n = 13; i = 2;
+//13 -> (1101) base2
+//1 << 2 -> 100
+//1101 & ~100 -> 1101 & 011 -> 1001
+
+
+//15. Toggle the ith bit means make 0 -> 1 and make 1 -> 0
+//n ^ (1 << i)
+//n = 13; i = 2;
+//1101 ^ 100 -> 1001
+//1001 ^ 100 -> 1101
