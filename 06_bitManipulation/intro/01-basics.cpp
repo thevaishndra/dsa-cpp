@@ -122,3 +122,134 @@ int convert2Decimal (string x) {
 //n = 13; i = 2;
 //1101 ^ 100 -> 1001
 //1001 ^ 100 -> 1101
+
+
+//16. Binary Subtraction -> 1 - 1 = 0; 1 - 0 = 1; 0 - 1 = borrow 1 it becomes 10 - 1 = 1 
+
+//17. Remove the last set bit (right most)
+//n = 12 -> 1100 - 1 = 1011 last set bit becomes 0
+//0 - 1 => 10 - 1 = 1;  0 - 1 => 1 - 0 = 1 because it was 0 it borrowed and has given so it doesnt become 10 but 1
+//1 - 0 => 0 - 0 = 0 as it has also given and no need to borrow; 1 - 0 = 1
+//n = 16 -> 10000 - 1 => 01111 last set bit becomes 0
+
+
+//18. Check if the no. is a power of 2
+//n = 16 -> 10000 -> 1 set bit so power of 2 
+//n = 13 -> 1101 -> 3 set bit not power of 2
+//(n & n - 1 == 0) it satisfies the condition then yes
+//10000 & 01111 = 00000 == 0 power of 2
+//1101 & 1100 = 1100 != 0 not a power of 2
+
+
+//19. Count the no of set bits
+//n = 13 -> 1101 -> 3 set bits
+//how many times it doesn't gets divided by 2 it produces remainder as 1 and that is set bit we need to count
+int countSetBits(int n) {
+    int cnt = 0;
+    while(n > 1) {
+        if(n % 2 == 1) cnt += 1; // cnt += n & 1; n = n >> 1 // bit op are slightly faster and hence used in cp
+        n = n / 2;
+    }
+    if (n == 1) cnt += 1;
+    return cnt;
+}
+//builtin stl popcount(x) -> func that gives the set bit
+
+
+//20. Divide 2 integers without using multiplication and division operator
+//dividend = 22; divisor = 3; 22/3 = 7 ans
+//3 + 3 + 3 + 3 + 3 + 3 + 3 = 21
+int divide(int dividend, int divisor) {
+        
+        // Base case
+        if(dividend == divisor) return 1;
+        if(dividend == INT_MIN && divisor == -1) return INT_MAX;
+        if(divisor == 1) return dividend;
+        
+        // Variable to store the sign of result
+        bool isPositive = true;
+        
+        // Updating the sign of quotient
+        if(dividend >= 0 && divisor < 0) 
+            isPositive = false;
+        else if(dividend < 0 && divisor > 0)
+            isPositive = false;
+            
+        // Storing absolute dividend & divisor
+        long long n = dividend;
+        long long d = divisor;
+
+        n = abs(n);
+        d = abs(d);
+        
+        // Variable to store the answer and sum
+        long long ans = 0, sum = 0;
+        
+        /* Looping while sum added to divisor is
+        less than or equal to divisor */
+        while(sum + d <= n) {
+            
+            // Increment the count
+           ans++;
+           // Update the sum
+           sum += d;
+        }
+        
+        // Handling overflowing condition
+        if(ans > INT_MAX && isPositive) 
+            return INT_MAX;
+        if(ans > INT_MAX && !isPositive)
+            return INT_MIN;
+        
+        /* Returning the quotient 
+        with proper sign */
+        return isPositive ? ans : -1*ans;
+    }
+//tc -> O(dividend)
+
+ int divide(int dividend, int divisor) {
+        
+        // Base case
+        if(dividend == divisor) return 1;
+        if(dividend == INT_MIN && divisor == -1) return INT_MAX;
+        if(divisor == 1) return dividend;
+        
+        // Variable to store the sign of result
+        bool isPositive = true;
+        
+        // Updating the sign of quotient
+        if(dividend >= 0 && divisor < 0) 
+            isPositive = false;
+        else if(dividend < 0 && divisor > 0)
+            isPositive = false;
+            
+        // Storing absolute dividend & divisor
+        long long n = dividend;
+        long long d = divisor;
+
+        n = abs(n);
+        d = abs(d);
+        
+        // Variable to store the answer and sum
+        long long ans = 0, sum = 0;
+        
+        /* Looping while sum added to divisor is
+        less than or equal to divisor */
+        while(sum + d <= n) {
+            
+            // Increment the count
+           ans++;
+           // Update the sum
+           sum += d;
+        }
+        
+        // Handling overflowing condition
+        if(ans > INT_MAX && isPositive) 
+            return INT_MAX;
+        if(ans > INT_MAX && !isPositive)
+            return INT_MIN;
+        
+        /* Returning the quotient 
+        with proper sign */
+        return isPositive ? ans : -1*ans;
+    }
