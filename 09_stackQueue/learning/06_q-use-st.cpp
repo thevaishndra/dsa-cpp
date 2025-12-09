@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
+//method 1 :- enqueue is costly
 class Queue {
     stack<int> s1, s2;
 
@@ -48,6 +49,7 @@ public:
         return s1.empty();
     }
 };
+
 
 //method 2
 class Queue {

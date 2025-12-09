@@ -18,55 +18,56 @@ class Queue {
 
 public:
     Queue() {
-        front = nullptr;
-        rear = nullptr;
+        front = nullptr;//first element of queue
+        rear = nullptr;//last element of queue
     }
 
     // Enqueue (Insert at rear)
     void enqueue(int x) {
-        Node* newNode = new Node(x);
+        Node* newNode = new Node(x);//create a new node
 
-        if (rear == nullptr) {  // Queue empty
-            front = rear = newNode;
+        if (rear == nullptr) {  // Queue is empty
+            front = rear = newNode; // both front and rear point to the new node
             cout << x << " enqueued\n";
             return;
         }
 
-        rear->next = newNode;
-        rear = newNode;
+        //if queue is not empty
+        rear->next = newNode; //next of rear is new node
+        rear = newNode;//update rear to new node
         cout << x << " enqueued\n";
     }
 
     // Dequeue (Remove from front)
     void dequeue() {
-        if (front == nullptr) {
+        if (front == nullptr) {//if queue is empty it's case of underflow
             cout << "Queue Underflow\n";
             return;
         }
 
-        Node* temp = front;
-        front = front->next;
+        Node* temp = front;//temp stores the front node which is going to be dequeued
+        front = front->next;//move the front forward
 
-        // If queue becomes empty
+        // If queue becomes empty after deleting then rear should also be nullptr
         if (front == nullptr)
             rear = nullptr;
 
-        cout << temp->data << " dequeued\n";
-        delete temp;
+        cout << temp->data << " dequeued\n";//the data of dequeued node
+        delete temp;//free memory
     }
 
     // Get front element
-    int peek() {
-        if (front == nullptr) {
+    int getFront() {
+        if (front == nullptr) {//if queue is empty front is nullptr
             cout << "Queue is empty\n";
             return -1;
         }
-        return front->data;
+        return front->data;//if not then return data
     }
 
     // Check if empty
     bool isEmpty() {
-        return front == nullptr;
+        return front == nullptr;//if front is nullptr then queue is empty
     }
 };
 //tc -> O(1) //sc -> O(n)
