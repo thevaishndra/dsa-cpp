@@ -1,19 +1,19 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//Q.8 Implement min stack
+//Q.8 Implement min stack -> returns minimum element in stack
 //Brute
 class MinStack {
     stack<pair<int, int>> st;   // {value, current minimum}
 
 public:
     // Push element
-    void push(int val) {
+    void push(int val) {//if stack is empty, push {val, val}
         if (st.empty()) {
             st.push({val, val});
         } 
-        else {
-            int currentMin = min(val, st.top().second);
+        else {//otherwise calculate minimum and push that
+            int currentMin = min(val, st.top().second);//{}
             st.push({val, currentMin});
         }
     }
@@ -27,15 +27,14 @@ public:
 
     // Return top element
     int top() {
-        return st.top().first;
+        return st.top().first;//first element is val
     }
 
     // Return minimum element
     int getMin() {
-        return st.top().second;
+        return st.top().second;//second element is current minimum
     }
 };
-
 //tc -> O(1) //sc -> O(2 * n)
 
 //Optimal
