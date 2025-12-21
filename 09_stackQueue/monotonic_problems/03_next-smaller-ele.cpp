@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//Q3. Given an array of integers arr, your task is to find the Next Smaller Element (NSE) for every element in the array
+//Q3. Next smaller element
+//find nse for every element in the array
 //The Next Smaller Element for an element x is defined as the first element to the right of x that is smaller than x.
 //If there is no smaller element to the right, then the NSE is -1
 
@@ -10,18 +11,15 @@ vector<int> nextSmallerElement(vector<int> &arr) {
     int n = arr.size();
     vector<int> nse(n, -1);
 
-    for (int i = 0; i < n; i++) {
-
-        for (int j = i + 1; j < n; j++) {   // FIX: look to the RIGHT
-
+    for (int i = 0; i < n; i++) {//2 pointer 
+        for (int j = i + 1; j < n; j++) {//obvio if arr[j] < arr[i] -> next ele is smaller than prev ele
             if (arr[j] < arr[i]) {
                 nse[i] = arr[j];
                 break;
             }
         }
     }
-
-    return nse;
+    return nse;//ans
 }
 //tc -> O(n^2) //sc -> O(1)
 
@@ -48,4 +46,5 @@ vector<int> findNSE(vector<int> &arr) {
 
     return nse;
 }
+//same as next greater element lil bit changes as we are finding next smaller element; it's not cicular though just right side
 //tc -> O(n^2) //sc -> O(n)
