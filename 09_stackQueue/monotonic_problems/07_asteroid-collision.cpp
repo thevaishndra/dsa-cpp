@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-//
+//Asteroid Collision
 
 func(Arr) {
     list st;
