@@ -68,3 +68,54 @@
 //         }
 //         return total;
 //     }
+
+
+// 735. Asteroid Collision
+// vector<int> asteroidCollision(vector<int>& asteroids) {
+//         list<int> st;
+//         for(int i = 0; i < asteroids.size(); i++) {
+//             if(asteroids[i] > 0) {
+//                 st.push_back(asteroids[i]);
+//             }
+//             else {
+//                 while(!st.empty() && st.back() > 0 && st.back() < abs(asteroids[i])){
+//                     st.pop_back();
+//                 }
+//                 if(!st.empty() && st.back() == abs(asteroids[i])) {
+//                     st.pop_back();
+//                 }
+//                 else if (st.empty() || st.back() < 0) {
+//                     st.push_back(asteroids[i]);
+//                 }
+//             }
+//         }
+//         return vector<int>(st.begin(), st.end());
+//     }
+
+
+// 402. Remove K Digits
+// string removeKdigits(string num, int k) {
+//         stack<char> st;
+//         for (int i = 0; i < num.size(); i++) {
+//         while (!st.empty() && k > 0 && st.top() > num[i]) {
+//             st.pop();
+//             k--;
+//         }
+//         st.push(num[i]);
+//         }
+//         while (k > 0 && !st.empty()) {
+//         st.pop();
+//         k--;
+//         }
+//         string res = "";
+//         while (!st.empty()) {
+//         res.push_back(st.top());
+//         st.pop();
+//         }
+//         reverse(res.begin(), res.end());
+//         while (!res.empty() && res[0] == '0') {
+//         res.erase(res.begin());
+//         }
+//         if (res.empty()) return "0";
+//         return res;
+//     }
